@@ -43,20 +43,20 @@ Array.prototype.remove=function(dx) {
 }
 
 //const
-var TOTALR = 15, //ÇòµÄ°ë¾¶(°üÀ¨ÒõÓ°)
-	R = 12, //ÇòÕæÊµ°ë¾¶
+var TOTALR = 15, //çƒçš„åŠå¾„(åŒ…æ‹¬é˜´å½±)
+	R = 12, //çƒçœŸå®žåŠå¾„
 	POKER = 20,
-	W = 736, //°¸¿í
-	H = 480, //°¸¸ß
-	THICKNESS =  32, //±ßÔµºñ¶È
-	RATE = 100, //Ë¢ÐÂÆµÂÊ
-	F = 0.01, //Ä¦²ÁÁ¦
-	LOSS = 0.2, // Åö×²ËÙ¶ÈËðÊ§
-	TIPS = ["Tip1: ²Î¿¼Çò£¬Ä¿±êÇò£¬Ä¿±ê´ü£¬ÈýµãÒ»Ïß£¬ÕâÊÇ×î»ù±¾µÄ½øÇò·½·¨","Tip2: ÓÒÏÂ½ÇÀ¶Ìõ´ú±í»÷ÇòÁ¦¶È£¬Ð¡µÄÁ¦¶È¸ü±ãÓÚ¿ØÖÆÄ¸ÇòÎ»ÖÃ","Tip3: ÓÒÏÂ½Ç°×ÇòÉÏµÄÀ¶µã¿ØÖÆ»÷Çòµã£¬¸ß¸Ë£¬µÍ¸Ë£¬¼ÓÈû¶¼ÓÉËü¿ØÖÆ£¬¸ßÊÖÓë²ËÄñµÄÇø±ðÍùÍùÔÚ´Ë","Tip4: ×ÀÇò£¬ÆäÊµ´òµÄ²»ÊÇÄ¿±êÇò£¬ÊÇÄ¸Çò"];
-var table, //°¸×Ó
-	cueBall, //Ä¸Çò
-	guideBall, //²Î¿¼Çò
-	dotWrap, //²Î¿¼Ïß
+	W = 736, //æ¡ˆå®½
+	H = 480, //æ¡ˆé«˜
+	THICKNESS =  32, //è¾¹ç¼˜åŽšåº¦
+	RATE = 100, //åˆ·æ–°é¢‘çŽ‡
+	F = 0.01, //æ‘©æ“¦åŠ›
+	LOSS = 0.2, // ç¢°æ’žé€Ÿåº¦æŸå¤±
+	TIPS = ["Tip1: å‚è€ƒçƒï¼Œç›®æ ‡çƒï¼Œç›®æ ‡è¢‹ï¼Œä¸‰ç‚¹ä¸€çº¿ï¼Œè¿™æ˜¯æœ€åŸºæœ¬çš„è¿›çƒæ–¹æ³•","Tip2: å³ä¸‹è§’è“æ¡ä»£è¡¨å‡»çƒåŠ›åº¦ï¼Œå°çš„åŠ›åº¦æ›´ä¾¿äºŽæŽ§åˆ¶æ¯çƒä½ç½®","Tip3: å³ä¸‹è§’ç™½çƒä¸Šçš„è“ç‚¹æŽ§åˆ¶å‡»çƒç‚¹ï¼Œé«˜æ†ï¼Œä½Žæ†ï¼ŒåŠ å¡žéƒ½ç”±å®ƒæŽ§åˆ¶ï¼Œé«˜æ‰‹ä¸Žèœé¸Ÿçš„åŒºåˆ«å¾€å¾€åœ¨æ­¤","Tip4: æ¡Œçƒï¼Œå…¶å®žæ‰“çš„ä¸æ˜¯ç›®æ ‡çƒï¼Œæ˜¯æ¯çƒ"];
+var table, //æ¡ˆå­
+	cueBall, //æ¯çƒ
+	guideBall, //å‚è€ƒçƒ
+	dotWrap, //å‚è€ƒçº¿
 	speed = 12,
 	rollUp = 0,
 	rollRight = 0,
@@ -66,7 +66,7 @@ var table, //°¸×Ó
 	movingBalls = [],
 	pokes = [[0,0],[W/2,-5],[W,0],[0,H],[W/2,H+5],[W,H]],
 	hasShot = false;
-	shots = 0; //Á¬»÷´ÎÊý
+	shots = 0; //è¿žå‡»æ¬¡æ•°
 	
 window.onload = function() {
 	initTable();
@@ -94,11 +94,11 @@ function initTable() {
 
 function initBall() {
 
-	//Ìí¼ÓÄ¸Çò
+	//æ·»åŠ æ¯çƒ
 	cueBall = new Ball("cue",170,H/2);
 	balls.push(cueBall);
 	
-	//Ìí¼ÓÄ¿±êÇò
+	//æ·»åŠ ç›®æ ‡çƒ
 	for(var i = 0; i < 5; i++) {
 		for(var j = 0; j <= i; j++)	{
 			var ball = new Ball("target",520 + i*2*R, H/2 - R*i + j*2*R);
@@ -148,10 +148,10 @@ function Ball(type,x,y) {
 	div.className = type + " ball";
 	this.elem = table.appendChild(div);
 	this.type = type;
-	this.x = x; //Î»ÖÃ
+	this.x = x; //ä½ç½®
 	this.y = y;
-	this.angle = 0; //½Ç¶È
-	this.v = 0; //ËÙ¶È(²»°üº¬·½Ïò)
+	this.angle = 0; //è§’åº¦
+	this.v = 0; //é€Ÿåº¦(ä¸åŒ…å«æ–¹å‘)
 	setBallPos(this.elem,x,y);
 	return this;
 }
@@ -220,7 +220,7 @@ function showGuide(e) {
 	show(guideBall);
 	drawLine();
 	
-	//²Î¿¼Ïß
+	//å‚è€ƒçº¿
 	function drawLine() {
 		var dotNum = 16,
 			pos = getBallPos(cueBall.elem);
@@ -240,14 +240,14 @@ function showGuide(e) {
 function roll() {
 	if(movingBalls.length <= 0) {
 		if(!hasShot) shots = 0;
-		else shots ++; //ÀÛ¼ÆÁ¬»÷
+		else shots ++; //ç´¯è®¡è¿žå‡»
 
 		hasShot = false;
 		setStyle($("force"),"width",80+"px");
 		setPos($("dot"),22,22);		
 		window.clearInterval(timer);
 		
-		if(shots > 1) showScore(shots); //ÏÔÊ¾Á¬»÷Êý
+		if(shots > 1) showScore(shots); //æ˜¾ç¤ºè¿žå‡»æ•°
 		startShot();
 	}
 	for(var i = 0; i < movingBalls.length; i++) {
@@ -255,7 +255,7 @@ function roll() {
 			sin = Math.sin(ball.angle),
 			cos = Math.cos(ball.angle);
 		ball.v -= F;
-		//ÒÆ³ý¾²Ö¹µÄÐ¡Çò
+		//ç§»é™¤é™æ­¢çš„å°çƒ
 		if(Math.round(ball.v) == 0) {
 			ball.v = 0;
 			movingBalls.remove(i);
@@ -266,7 +266,7 @@ function roll() {
 		ball.x += vx;
 		ball.y += vy;
 				
-		//Èë´ü
+		//å…¥è¢‹
 		if(isPocket(ball.x,ball.y)) {
 			hide(ball.elem);
 			
@@ -282,7 +282,7 @@ function roll() {
 				},500);
 
 			}else {
-				//ÒÆ³ýÈë´üÐ¡Çò
+				//ç§»é™¤å…¥è¢‹å°çƒ
 				hasShot = true;
 				ball.v = 0;	
 				for(var k = 0, l =0; k < balls.length; k++) {
@@ -295,7 +295,7 @@ function roll() {
 			return;
 		}
 		
-		//±ßÔµÅö×²
+		//è¾¹ç¼˜ç¢°æ’ž
 		if(ball.x < R || ball.x > W - R) {
 			ball.angle *= -1;
 			ball.angle %= Math.PI;
@@ -304,7 +304,7 @@ function roll() {
 			vy = ball.v*Math.cos(ball.angle);
 			if(ball.x < R) ball.x = R;
 			if(ball.x > W - R) ball.x = W - R;
-			//Ä¸Çò¼ÓÈû
+			//æ¯çƒåŠ å¡ž
 			if(ball.type == "cue")	{
 				if(ball.angle > 0) vy -= rollRight;
 				else vy += rollRight;
@@ -323,7 +323,7 @@ function roll() {
 			vy = ball.v*Math.cos(ball.angle);
 			if(ball.y < R) ball.y = R;
 			if(ball.y > H - R) ball.y = H - R;	
-			//Ä¸Çò¼ÓÈû
+			//æ¯çƒåŠ å¡ž
 			if(ball.type == "cue")	{
 				if(Math.abs(ball.angle) < Math.PI/2) vx += rollRight;
 				else vx -= rollRight;
@@ -335,7 +335,7 @@ function roll() {
 			}					
 		}
 		
-		//Ð¡ÇòÅö×²
+		//å°çƒç¢°æ’ž
 		for(var j = 0; j < balls.length; j++) {
 			var obj = balls[j];
 			if(obj == ball) continue;
@@ -346,25 +346,25 @@ function roll() {
 				var dis = Math.sqrt(Math.pow(disX,2)+Math.pow(disY,2));
 				if(dis <= gap) {
 
-					//Èç¹ûÊÇ¾²Ö¹µÄ£¬ÔòÌí¼Óµ½Êý×émovingBalls
+					//å¦‚æžœæ˜¯é™æ­¢çš„ï¼Œåˆ™æ·»åŠ åˆ°æ•°ç»„movingBalls
 					if(Math.round(obj.v) == 0)	
 					movingBalls.push(obj);
 					
-					//½«×ø±êÐý×ªµ½xÖá½øÐÐÅö×²¼ÆËã
+					//å°†åæ ‡æ—‹è½¬åˆ°xè½´è¿›è¡Œç¢°æ’žè®¡ç®—
 					
-					// ¼ÆËã½Ç¶ÈºÍÕýÓàÏÒÖµ - ¾«È·Öµ
+					// è®¡ç®—è§’åº¦å’Œæ­£ä½™å¼¦å€¼ - ç²¾ç¡®å€¼
 					//var c = (obj.x*ball.y - obj.y*ball.x)/(2*R),
 					//	d = Math.sqrt(ball.x*ball.x + ball.y*ball.y),
 					//	angle = Math.asin(ball.y/d) - Math.asin(c/d) - ball.angle%(Math.PI/2),
 						//angle =  Math.asin(oy / (2 * R)),
 					
-					//»¹Ô­Á½ÇòÏàÇÐ×´Ì¬ - ½üËÆÖµ
+					//è¿˜åŽŸä¸¤çƒç›¸åˆ‡çŠ¶æ€ - è¿‘ä¼¼å€¼
 					ball.x -= (gap - dis)*sin;
 					ball.y -= (gap - dis)*cos;
 					disX = obj.x - ball.x;
 					disY = obj.y - ball.y;
 					
-					// ¼ÆËã½Ç¶ÈºÍÕýÓàÏÒÖµ
+					// è®¡ç®—è§’åº¦å’Œæ­£ä½™å¼¦å€¼
 					var angle = Math.atan2(disY, disX),
 						hitsin = Math.sin(angle),
 						hitcos = Math.cos(angle),
@@ -372,7 +372,7 @@ function roll() {
 						objVy = obj.v * Math.cos(obj.angle);
 						//trace(angle*180/Math.PI);
 						
-					// Ðý×ª×ø±ê
+					// æ—‹è½¬åæ ‡
 					var x1 = 0,
 						y1 = 0,
 						x2 = disX * hitcos + disY * hitsin,
@@ -382,12 +382,12 @@ function roll() {
 						vx2 = objVx * hitcos + objVy * hitsin,
 						vy2 = objVy * hitcos - objVx * hitsin;
 					
-					// Åö×²ºóµÄËÙ¶ÈºÍÎ»ÖÃ
+					// ç¢°æ’žåŽçš„é€Ÿåº¦å’Œä½ç½®
 					var plusVx = vx1 - vx2;
 					vx1 = vx2;
 					vx2 = plusVx + vx1;
 					
-					//Ä¸Çò¼ÓÈû
+					//æ¯çƒåŠ å¡ž
 					if(ball.type == "cue")	{
 						vx1 += rollUp;
 						rollUp *= 0.2;
@@ -396,7 +396,7 @@ function roll() {
 					x1 += vx1;
 					x2 += vx2;
 					
-					// ½«Î»ÖÃÐý×ª»ØÀ´
+					// å°†ä½ç½®æ—‹è½¬å›žæ¥
 					var x1Final = x1 * hitcos - y1 * hitsin,
 						y1Final = y1 * hitcos + x1 * hitsin,
 						x2Final = x2 * hitcos - y2 * hitsin,
@@ -406,17 +406,17 @@ function roll() {
 					ball.x = ball.x + x1Final;
 					ball.y = ball.y + y1Final;
 					
-					// ½«ËÙ¶ÈÐý×ª»ØÀ´
+					// å°†é€Ÿåº¦æ—‹è½¬å›žæ¥
 					vx = vx1 * hitcos - vy1 * hitsin;
 					vy = vy1 * hitcos + vx1 * hitsin;
 					objVx = vx2 * hitcos - vy2 * hitsin;
 					objVy = vy2 * hitcos + vx2 * hitsin; 
 					
-					//×îÖÕËÙ¶È
+					//æœ€ç»ˆé€Ÿåº¦
 					ball.v = Math.sqrt(vx*vx + vy*vy) * (1 - 0);
 					obj.v = Math.sqrt(objVx*objVx + objVy*objVy) * (1 - 0);
 					
-					// ¼ÆËã½Ç¶È
+					// è®¡ç®—è§’åº¦
 					ball.angle = Math.atan2(vx , vy);
 					obj.angle = Math.atan2(objVx , objVy);	
 															
@@ -513,7 +513,7 @@ function show(obj) {
 	setStyle(obj,"display","block");
 }
 
-//Êä³öÐÅÏ¢
+//è¾“å‡ºä¿¡æ¯
 function trace(sth,who) {
 	who = who || $("tips");
 	if(document.all) who.innerText = sth;
@@ -523,7 +523,7 @@ function trace(sth,who) {
 
 function showScore(n) {
 	var wrap = $("scoreBoard");
-	trace(n+"Á¬¸Ë",wrap);
+	trace(n+"è¿žæ†",wrap);
 	fadeIn(wrap);
 }
 
