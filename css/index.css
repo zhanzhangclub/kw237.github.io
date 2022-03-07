@@ -1,0 +1,13 @@
+.container{
+    min-height: 800px;
+}
+
+p{
+        font-size: 18px;
+    }
+    .row ul{
+        background-color: yellow;
+    }
+    li{
+        font-size:20px;
+    }
