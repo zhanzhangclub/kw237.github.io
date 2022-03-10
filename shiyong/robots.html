@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>robots文件生成 - 站长工具</title>
+		<meta name="description" content="该功能可以帮助站长在不了解robots协议的情况下快速生成robots.txt文件" />
+		<script>
+			var jsurlbase = '//csstools.chinaz.com/tools/js';
+			var imgurlbase = '//csstools.chinaz.com/tools/images';
+			var styleurlbase = '//csstools.chinaz.com/tools/styles';
+		</script>
+		<link rel="stylesheet" type="text/css" href="//csstools.chinaz.com/common/styles/all-base.css?v=20210929">
+		<link rel="shortcut icon" type="image/ico" href="//csstools.chinaz.com/favicon.ico">
+		<link rel="stylesheet" href="//csstools.chinaz.com/tools/styles/iconfont/iconfont.css?v=20210929" type="text/css" />
+		<script type="text/javascript" src="//csstools.chinaz.com/common/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="//csstools.chinaz.com/common/js/jq-public.js?v=20211118"></script>
+		<script type="text/javascript" src="//csstools.chinaz.com/common/js/jq-TopNav.js?v=20220209"></script>
+
+		<link rel="stylesheet" href="//csstools.chinaz.com/tools/styles/toolstyle.css?v=20210615" type="text/css" />
+		<script src="//csstools.chinaz.com/tools/js/robot.js?ver=20111018" charset="gb2312" type="text/javascript"></script>
+	</head>
+
+	<body>
+		<p>
+			<!--ToolTop-end-->
+			<!--ToolHead-begin-->
+
+			<!--ToolHead-end-->
+			<!--ToolNavbar-begin-->
+			<div class="ToolNavbar" id="ToolNav">
+				<div class="Tool-mainnav">
+					<div class="Tool-nav clearfix">
+						<div class="Tool-link">
+							<ul class="clearfix">
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</p>
+
+		<!--Tool-MainWrap-begin-->
+		<style>
+			.radioBox {
+				cursor: pointer
+			}
+		</style>
+		<div class="Tool-MainWrap wrapper ptb10 clearfix">
+
+			<div class="RobotsList clearfix">
+				<div class="RobotsLeft fl">限制目录：</div>
+				<div class="RobotsRight fr" id="xianzhi">
+					<input class="RobTxt" type="text" value="/bin/" ref="xianzhi" /><input class="RobTxt" type="text" ref="xianzhi" /><input class="RobTxt" type="text" ref="xianzhi" /><input class="RobTxt" type="text" ref="xianzhi" />
+					<div class="fl"><input class="RobBtn add" type="button" value="增加限制目录" />
+						<p class="col-red fz12 fl lh30">每个路径之前都要包含："/"</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="RobotsList clearfix">
+				<div class="RobotsLeft fl"><span class="col-red fz12">(留空为无)</span>Sitemap：</div>
+				<div class="RobotsRight fr" id="sitemap">
+					<input class="RobTxt" type="text" ref="sitemap" value="http://domain.com/sitemap.xml" />
+					<div class="fl"><input class="RobBtn addsite" type="button" value="增加Sitemap" />
+						<p class="col-red fz12 fl lh30">谷歌为xml格式，百度为html格式</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="RobotsList clearfix">
+				<div class="RobotsLeft fl">检索间隔：</div>
+				<div class="RobotsRight fr">
+					<input class="RobTxt" type="text" name="delay" id="delay" />
+					<div class="MainCate-choese _ToolChoese">
+						<div class="MainCateW-choese pr SearChoeseWrap w105">
+							<div class="MainCateW-cont SearChoese w90">不限</div>
+							<input type="hidden" value="">
+							<span class="MCicon-drop-down SearChoese"></span>
+							<ul class="MainCateC-down SearChoese-show w100">
+								<li>
+									<a val="" href="javascript:">不限</a>
+								</li>
+								<li>
+									<a val="5" href="javascript:">5 Seconds</a>
+								</li>
+								<li>
+									<a val="10" href="javascript:">10 Seconds</a>
+								</li>
+								<li>
+									<a val="20" href="javascript:">20 Seconds</a>
+								</li>
+								<li>
+									<a val="60" href="javascript:">60 seconds</a>
+								</li>
+								<li>
+									<a val="120" href="javascript:">120 Seconds</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="RobotsList clearfix">
+				<div class="RobotsLeft fl">所有搜索引擎：</div>
+				<div class="RobotsRight fr">
+					<ul class="RobotsRodWrap ww100">
+						<li class="clearfix faRadio pl30">
+							<div class="clearfix fl pr20 radoBox allTxtRadio">
+								<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+							<div class="clearfix fl radoBox allTxtRadio">
+								<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+							<input type="hidden" id="all" value=" " />
+						</li>
+					</ul>
+
+					<div class="clearfix RobotsRodList">
+						<div class="RodTitle">国内搜索引擎</div>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">百度</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="baidu" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">SOSO</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="soso" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">搜狗</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="sogou" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">有道</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="youdao" value="" />
+							</li>
+						</ul>
+					</div>
+
+					<div class="clearfix RobotsRodList">
+						<div class="RodTitle">国外搜索引擎</div>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">谷歌</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="google" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Bing</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="bing" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">雅虎</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="yahoo" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Ask/Teoma</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="ask" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Alexa/Wayback</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="alexa" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Cuil</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="cuil" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">MSN Search</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="msn" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Scrub The Web</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="scrub" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">DMOZ</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="dmoz" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">GigaBlast</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="giga" value="" />
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix RobotsRodList">
+						<div class="RodTitle">特殊搜索引擎(机器人)</div>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Google Image</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="googleimage" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Google Mobile</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="googlemobile" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Yahoo MM</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="yahoomm" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">Yahoo Blogs</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="yahooblogs" value="" />
+							</li>
+						</ul>
+						<ul class="RobotsRodWrap w33-0 fl">
+							<li class="clearfix faRadio">
+								<div class="TxtLable fl">MSN PicSearch</div>
+								<div class="clearfix fl pr20 radoBox" val="">
+									<div class="TxtRadioA icon TxtRadio"></div><span class="block fl pt5">默认</span></div>
+								<div class="clearfix fl pr20 radoBox" val=" ">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">允许</span></div>
+								<div class="clearfix fl radoBox" val=" /">
+									<div class="TxtRadioD icon TxtRadio"></div><span class="block fl pt5">拒绝</span></div>
+								<input type="hidden" id="msnpic" value="" />
+							</li>
+						</ul>
+					</div>
+
+					<div class="RobBtnWrap"><input type="button" value="生成" class="RobBtn02" id="create" /><input type="submit" value="清空结果" id="clear" class="bg-blue02" />
+						<p class="fl col-red fz12 lh40">请将以上结果保存到记事本,命名为robots.txt上传到网站根目录</p>
+					</div>
+					<div class="pr"><textarea class="RobotsCent bor-a1s h268 WrapHid HJtxt"># robots.txt generated at http://tool.chinaz.com/robots
+User-agent: *
+Disallow:</textarea> <b class="search-hint CentHid"><pre># robots.txt generated at http://tool.chinaz.com/robots
+User-agent: *
+Disallow:</pre></b></div>
+
+				</div>
+			</div>
+
+			<!--siteBar-begin-->
+
+	</body>
+
+</html>
